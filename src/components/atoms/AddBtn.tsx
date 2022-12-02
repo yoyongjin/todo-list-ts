@@ -7,7 +7,7 @@ const Button = styled.button`
 `;
 
 const AddBtn = () => {
-  return <Button>ADD</Button>;
+  return <Button type="submit">ADD</Button>;
 };
 
 export default AddBtn;
