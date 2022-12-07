@@ -1,8 +1,10 @@
-# Getting Started with Create React App
+# Making Todo-List using useState, redux, and redux toolkit
+
+Good exercise for refactoring state management code.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Available Scriptse
 
 In the project directory, you can run:
 
