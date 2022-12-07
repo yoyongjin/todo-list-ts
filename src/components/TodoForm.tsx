@@ -1,5 +1,8 @@
-import React from "react";
+import { useState } from "react";
 import styled from "styled-components";
+
+import TodoList from "./TodoList";
+import { Todo } from "./types";
 
 const Container = styled.div`
   display: flex;
@@ -43,26 +46,42 @@ const CheckAllContainer = styled.div`
   margin: 0 3px 0.5rem 0;
   /* background-color: #a3aea3; */
 `;
-const TodoContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid #aaa;
-  border-radius: 8px;
-  padding: 2px;
-  /* background-color: #fffeb9; */
-`;
-const WhatTodo = styled.span`
-  /* background-color: #e05353; */
-`;
+
+const initialTodoList: Todo[] = [];
 
 const TodoForm = () => {
+  const [todoInput, setTodoInput] = useState("");
+  const [todoList, setTodoList] = useState(initialTodoList);
+  const [isAllChecked, setIsAllChecked] = useState(false);
+
+  const onChangeHandler = (e: any) => {
+    setTodoInput(e.target.value);
+    console.log("render");
+  };
+
+  const onAddSubmitHandler = (e: any) => {
+    e.preventDefault();
+    console.log(todoInput);
+    setTodoList((prev) => [
+      ...prev,
+      { id: todoList.length + 1, title: todoInput, isComplete: isAllChecked },
+    ]);
+    setTodoInput("");
+    console.log(todoList);
+  };
+  const onAllCheckHandler = (e: any) => {
+    console.log("allcheck state changed!");
+    setIsAllChecked((prev) => !prev);
+  };
   return (
     <Container>
-      <FormContainer>
+      <FormContainer onSubmit={onAddSubmitHandler}>
         <Input
           type="text"
           id="addTodo"
           placeholder="Tell me what to do:"
+          onChange={onChangeHandler}
+          value={todoInput}
         />
         <Button type="submit">ADD</Button>
       </FormContainer>
@@ -70,12 +89,13 @@ const TodoForm = () => {
       <TodosContainer>
         <CheckAllContainer>
           <span>전체선택</span>
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={isAllChecked}
+            onChange={onAllCheckHandler}
+          />
         </CheckAllContainer>
-        <TodoContainer>
-          <WhatTodo>asdf</WhatTodo>
-          <input type="checkbox" />
-        </TodoContainer>
+        <TodoList todo={todoList} />
       </TodosContainer>
 
       <Button>DEL</Button>
