@@ -1,7 +1,7 @@
 import React from "react";
 
 import styled from "styled-components";
-import TodoListTemplate from "./components/templates/TodoListTemplate";
+import TodoForm from "./components/TodoForm";
 
 const AppContainer = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ const AppContainer = styled.div`
 function App() {
   return (
     <AppContainer>
-      <TodoListTemplate />
+      <TodoForm />
     </AppContainer>
   );
 }
