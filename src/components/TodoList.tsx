@@ -1,35 +1,19 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React from "react";
+import TodoItem from "./TodoItem";
 import { Todo } from "./types";
 
-const TodoListContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid #aaa;
-  border-radius: 8px;
-  padding: 2px;
-  /* background-color: #fffeb9; */
-`;
-const WhatTodo = styled.span`
-  /* background-color: #e05353; */
-`;
-
 const TodoList = (props: any) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const onTodoCheckHandler = (e: any) => {
-    setIsChecked((prev) => !prev);
-  };
-  return props.todo.map((todo: Todo) => (
-    <TodoListContainer key={todo.id}>
-      <WhatTodo>{todo.title}</WhatTodo>
-
-      <input
-        type="checkbox"
-        onChange={onTodoCheckHandler}
-        checked={isChecked}
-      />
-    </TodoListContainer>
-  ));
+  return (
+    props.todos &&
+    props.todos.map((todo: Todo) => {
+      return (
+        <TodoItem
+          todo={todo}
+          key={todo.id}
+        />
+      );
+    })
+  );
 };
 
 export default TodoList;

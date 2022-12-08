@@ -95,7 +95,7 @@ const TodoForm = () => {
             onChange={onAllCheckHandler}
           />
         </CheckAllContainer>
-        <TodoList todo={todoList} />
+        <TodoList todos={todoList} />
       </TodosContainer>
 
       <Button>DEL</Button>
