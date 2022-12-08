@@ -32,6 +32,7 @@ const TodoItem = (props: any) => {
         onChange={onTodoCheckHandler}
         checked={isChecked}
       /> */}
+      {props.children}
     </TodoItemContainer>
   );
 };

@@ -10,7 +10,9 @@ const Container = styled.div`
   justify-content: space-between;
   gap: 5px;
   width: 30%;
+  min-width: 40%;
   max-height: 30vh;
+
   background-color: #fff;
   padding: 0.75rem 1rem;
 `;
@@ -64,7 +66,7 @@ const TodoForm = () => {
     console.log(todoInput);
     setTodoList((prev) => [
       ...prev,
-      { id: todoList.length + 1, title: todoInput, isComplete: false },
+      { id: todoList.length, title: todoInput, isComplete: false },
     ]);
     setTodoInput("");
     console.log(todoList);
