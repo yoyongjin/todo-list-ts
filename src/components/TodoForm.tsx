@@ -40,19 +40,19 @@ const TodosContainer = styled.div`
   /* padding-bottom: 5px; */
   /* background-color: #98dab9; */
 `;
-const CheckAllContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  margin: 0 3px 0.5rem 0;
-  /* background-color: #a3aea3; */
-`;
+// const CheckAllContainer = styled.div`
+//   display: flex;
+//   justify-content: flex-end;
+//   margin: 0 3px 0.5rem 0;
+//   /* background-color: #a3aea3; */
+// `;
 
 const initialTodoList: Todo[] = [];
 
 const TodoForm = () => {
   const [todoInput, setTodoInput] = useState("");
   const [todoList, setTodoList] = useState(initialTodoList);
-  const [isAllChecked, setIsAllChecked] = useState(false);
+  // const [isAllChecked, setIsAllChecked] = useState(false);
 
   const onChangeHandler = (e: any) => {
     setTodoInput(e.target.value);
@@ -64,15 +64,18 @@ const TodoForm = () => {
     console.log(todoInput);
     setTodoList((prev) => [
       ...prev,
-      { id: todoList.length + 1, title: todoInput, isComplete: isAllChecked },
+      { id: todoList.length + 1, title: todoInput, isComplete: false },
     ]);
     setTodoInput("");
     console.log(todoList);
   };
-  const onAllCheckHandler = (e: any) => {
-    console.log("allcheck state changed!");
-    setIsAllChecked((prev) => !prev);
-  };
+
+  // 전체선택은 나중에;
+  // const onAllCheckHandler = (e: any) => {
+  //   console.log("allcheck state changed!");
+  //   setIsAllChecked((prev) => !prev);
+  // };
+
   return (
     <Container>
       <FormContainer onSubmit={onAddSubmitHandler}>
@@ -87,18 +90,18 @@ const TodoForm = () => {
       </FormContainer>
 
       <TodosContainer>
-        <CheckAllContainer>
+        {/* <CheckAllContainer>
           <span>전체선택</span>
           <input
             type="checkbox"
             checked={isAllChecked}
             onChange={onAllCheckHandler}
           />
-        </CheckAllContainer>
+        </CheckAllContainer> */}
         <TodoList todos={todoList} />
       </TodosContainer>
 
-      <Button>DEL</Button>
+      {/* <Button>DEL</Button> */}
     </Container>
   );
 };

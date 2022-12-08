@@ -16,21 +16,22 @@ const WhatTodo = styled.span`
 const TodoItem = (props: any) => {
   console.log("Render TodoItem");
 
-  const [isChecked, setIsChecked] = useState(false);
+  //   const [isChecked, setIsChecked] = useState(false);
 
-  const onTodoCheckHandler = (e: any) => {
-    setIsChecked((prev) => !prev);
-  };
+  //   const onTodoCheckHandler = (e: any) => {
+  //     setIsChecked((prev) => !prev);
+  //   };
 
   return (
     <TodoItemContainer key={props.todo.id}>
       <WhatTodo>{props.todo.title}</WhatTodo>
 
-      <input
+      {/* checkbox 나중에 */}
+      {/* <input
         type="checkbox"
         onChange={onTodoCheckHandler}
         checked={isChecked}
-      />
+      /> */}
     </TodoItemContainer>
   );
 };
