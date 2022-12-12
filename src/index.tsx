@@ -5,6 +5,8 @@ import reportWebVitals from "./reportWebVitals";
 
 import { createGlobalStyle } from "styled-components";
 import reset from "styled-reset";
+import { Provider } from "react-redux";
+import store from "./modules/store";
 
 const GlobalStyle = createGlobalStyle`
   ${reset}
@@ -24,10 +26,10 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <>
+  <Provider store={store}>
     <GlobalStyle />
     <App />
-  </>
+  </Provider>
 );
 
 // If you want to start measuring performance in your app, pass a function
